@@ -29,12 +29,12 @@ export class ContactForm extends Component {
   render() {
     return (
       <Formik
-        onSubmit={this.handleSubmit}
-        // validationSchema={Yup.object().shape({
-        //   name: Yup.string().required('Required'),
-        // })}
+
+      // validationSchema={Yup.object().shape({
+      //   name: Yup.string().required('Required'),
+      // })}
       >
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <label htmlFor="name">
             Name
             <Field
