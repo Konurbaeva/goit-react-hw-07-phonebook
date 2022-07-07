@@ -11,7 +11,9 @@ export class ContactList extends Component {
         <h2>Contacts</h2>
         <ul>
           {contacts.map(contact => (
-            <li key={contact.id}>{contact.name}</li>
+            <li key={contact.id}>
+              {contact.name} {contact.number}
+            </li>
           ))}
         </ul>
       </>
