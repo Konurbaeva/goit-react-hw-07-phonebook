@@ -27,16 +27,13 @@ export class ContactForm extends Component {
   render() {
     const { name, number } = this.props;
     // console.log(name);
-    console.log(this.props);
+    // name={name} addContact={this.addContact}
+    console.log(this.props.name);
 
     return (
       <Formik
         initialValues={initialValues}
-        // onSubmit={this.handleSubmit}
-        onSubmit={async values => {
-          await new Promise(resolve => setTimeout(resolve, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={this.handleSubmit}
         validationSchema={Yup.object().shape({
           name: Yup.string().required('Required'),
         })}
@@ -49,6 +46,7 @@ export class ContactForm extends Component {
               name="name"
               value={name}
               onChange={this.onChange}
+              placeholder="Enter name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
@@ -58,6 +56,7 @@ export class ContactForm extends Component {
             <Field
               type="tel"
               name="number"
+              placeholder="Enter number"
               value={number}
               onChange={this.onChange}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

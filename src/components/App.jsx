@@ -34,10 +34,10 @@ export class App extends Component {
   };
 
   render() {
-    const { name, contacts } = this.state;
+    const { contacts } = this.state;
     return (
       <>
-        <ContactForm name={name} addContact={this.addContact} />
+        <ContactForm addContact={this.addContact} />
         <ContactList contacts={contacts} deleteContact={this.deleteContact} />
       </>
     );
