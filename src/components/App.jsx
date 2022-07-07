@@ -1,10 +1,9 @@
-import { ContactForm } from "./ContactForm";
-
+import { ContactForm } from './ContactForm';
 
 export const App = () => {
   return (
-  <>
-  <ContactForm/>
-  </>
+    <>
+      <ContactForm />
+    </>
   );
 };
