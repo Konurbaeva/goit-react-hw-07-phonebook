@@ -9,17 +9,10 @@ const initialValues = {
 // name={name} addContact={this.addContact}
 export class ContactForm extends Component {
   onChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    // this.setState({ value: e.target.value });
+    this.setState({ name: e.target.value });
   };
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   const { login, email, password } = this.state;
-  //   console.log(`Login: ${login}, Email: ${email}, Password: ${password}`);
-  //   this.props.onSubmit({ ...this.state });
-  //   this.reset();
-  // };
   handleSubmit = e => {
     e.preventDefault();
     // const { name } = this.state;
@@ -33,7 +26,8 @@ export class ContactForm extends Component {
 
   render() {
     const { name, number } = this.props;
-    console.log(name);
+    // console.log(name);
+    console.log(this.props);
 
     return (
       <Formik
@@ -44,7 +38,7 @@ export class ContactForm extends Component {
           alert(JSON.stringify(values, null, 2));
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email().required('Required'),
+          name: Yup.string().required('Required'),
         })}
       >
         <Form>
