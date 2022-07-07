@@ -1,6 +1,7 @@
 import { Component } from 'react';
 // import { Formik } from 'formik';
 
+// contacts={contacts} deleteContact={this.deleteContact}
 export class ContactList extends Component {
   render() {
     const { contacts } = this.props;

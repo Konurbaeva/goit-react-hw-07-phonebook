@@ -1,43 +1,15 @@
 import { Component } from 'react';
-import { Formik, Form } from 'formik';
-
-// export class ContactForm extends Component {
-//   handleSubmit = e => {};
-
-//   onChange = e => {
-//     this.setState({ name: e.target.value });
-//   };
-
-//   render() {
-//     const { name } = this.props;
-//     console.log('this.props: ', this.props);
-//     return (
-//       <Formik onSubmit={this.handleSubmit}>
-//         <label htmlFor="name" style={{ display: 'block' }}>
-//           Name
-//           <input
-//             type="text"
-//             name="name"
-//             value={name}
-//             onChange={this.onChange}
-//             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//             required
-//           />
-//         </label>
-//       </Formik>
-//     );
-//   }
-// }
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 const initialValues = {
   name: 'John',
   number: '123',
 };
+// name={name} addContact={this.addContact}
 export class ContactForm extends Component {
   onChange = e => {
     const { name, value } = e.target;
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
@@ -61,13 +33,24 @@ export class ContactForm extends Component {
 
   render() {
     const { name, number } = this.props;
+    console.log(name);
 
     return (
-      <Formik initialValues={initialValues} onSubmit={this.handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        // onSubmit={this.handleSubmit}
+        onSubmit={async values => {
+          await new Promise(resolve => setTimeout(resolve, 500));
+          alert(JSON.stringify(values, null, 2));
+        }}
+        validationSchema={Yup.object().shape({
+          email: Yup.string().email().required('Required'),
+        })}
+      >
         <Form>
           <label htmlFor="name">
             Name
-            <input
+            <Field
               type="text"
               name="name"
               value={name}
@@ -78,7 +61,7 @@ export class ContactForm extends Component {
             />
           </label>
           <label htmlFor="number">
-            <input
+            <Field
               type="tel"
               name="number"
               value={number}
