@@ -8,14 +8,14 @@ export class ContactList extends Component {
 
     return (
       <>
-        <UlList>
+        <ul>
           {contacts.map(contact => (
             <li key={contact.id}>
               {contact.name} {contact.number}
               <Button onClick={() => deleteContact(contact.id)}>Delete</Button>
             </li>
           ))}
-        </UlList>
+        </ul>
       </>
     );
   }
@@ -29,8 +29,4 @@ const Button = styled.button`
   color: ${props => props.theme.colors.primary};
   border: ${props => props.theme.colors.primary} palevioletred;
   border-radius: 3px;
-`;
-
-const UlList = styled.ul`
-  list-style: none;
 `;
