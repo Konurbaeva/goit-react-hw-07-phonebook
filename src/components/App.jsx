@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
+import { Filter } from './Filter';
+// import Filter from './Filter';
 
 export class App extends Component {
   state = {
@@ -10,6 +12,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
     name: '',
     number: '',
   };
@@ -33,12 +36,26 @@ export class App extends Component {
     form.reset();
   };
 
+  handleSearch = e => {
+    const searchQuery = e.currentTarget.value;
+    console.log('searchQuery: ', searchQuery);
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+    const filteredContacts = contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    console.log('filteredContacts: ', filteredContacts);
     return (
       <>
         <ContactForm onSubmit={this.addContact} />
-        <ContactList contacts={contacts} deleteContact={this.deleteContact} />
+        <Filter filter={filter} handleSearch={this.handleSearch} />
+        <ContactList
+          contacts={filteredContacts}
+          deleteContact={this.deleteContact}
+        />
       </>
     );
   }
