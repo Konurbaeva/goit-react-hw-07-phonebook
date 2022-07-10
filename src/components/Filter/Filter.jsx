@@ -18,7 +18,7 @@ export function Filter({ filter, handleSearch }) {
 const Input = styled.input`
   padding: 0.5em;
   margin: 0.5em;
-  color: ${props => props.inputColor || 'palevioletred'};
+  color: ${props => props.theme.colors.primary};
   background: ${props => props.theme.colors.accent};
   border: none;
   border-radius: 3px;
