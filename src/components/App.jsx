@@ -13,8 +13,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   addContact = contact => {
@@ -49,7 +47,9 @@ export class App extends Component {
 
     return (
       <>
+        <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
+        <h2>Contacts</h2>
         <Filter filter={filter} handleSearch={this.handleSearch} />
         <ContactList
           contacts={filteredContacts}

@@ -8,7 +8,6 @@ export class ContactList extends Component {
 
     return (
       <>
-        <h2>Contacts</h2>
         <UlList>
           {contacts.map(contact => (
             <li key={contact.id}>
@@ -23,12 +22,15 @@ export class ContactList extends Component {
 }
 
 const Button = styled.button`
-  background: ${props => (props.primary ? 'palevioletred' : 'white')};
-  color: ${props => (props.primary ? 'white' : 'palevioletred')};
+  /* background: ${props => (props.primary ? 'palevioletred' : 'white')};
+  color: ${props => (props.primary ? 'white' : 'palevioletred')}; */
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  padding: 0.5em;
+  color: ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.accent};
+  border: ${props => props.theme.colors.primary} palevioletred;
   border-radius: 3px;
 `;
 

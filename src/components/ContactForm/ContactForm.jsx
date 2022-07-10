@@ -82,15 +82,15 @@ const FormBorder = styled(Form)`
 const Input = styled(Field)`
   padding: 0.5em;
   margin: 0.5em;
-  color: ${props => props.inputColor || 'palevioletred'};
-  background: pink;
+  color: ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.accent};
   border: none;
   border-radius: 3px;
 `;
 
 const Button = styled.button`
   background: ${props => (props.primary ? 'palevioletred' : 'white')};
-  color: ${props => (props.primary ? 'white' : 'palevioletred')};
+  color: ${props => props.theme.colors.primary};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
