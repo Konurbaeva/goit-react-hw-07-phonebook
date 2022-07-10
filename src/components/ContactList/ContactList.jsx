@@ -22,8 +22,6 @@ export class ContactList extends Component {
 }
 
 const Button = styled.button`
-  /* background: ${props => (props.primary ? 'palevioletred' : 'white')};
-  color: ${props => (props.primary ? 'white' : 'palevioletred')}; */
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;

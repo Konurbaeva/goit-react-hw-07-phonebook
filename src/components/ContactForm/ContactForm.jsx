@@ -89,11 +89,12 @@ const Input = styled(Field)`
 `;
 
 const Button = styled.button`
-  background: ${props => (props.primary ? 'palevioletred' : 'white')};
-  color: ${props => props.theme.colors.primary};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  padding: 0.5em;
+  color: ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.accent};
+  border: ${props => props.theme.colors.primary} palevioletred;
   border-radius: 3px;
 `;
