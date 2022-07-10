@@ -38,7 +38,7 @@ export class App extends Component {
 
   handleSearch = e => {
     const searchQuery = e.currentTarget.value;
-    console.log('searchQuery: ', searchQuery);
+    this.setState({ filter: searchQuery });
   };
 
   render() {
@@ -47,7 +47,6 @@ export class App extends Component {
       name.toLowerCase().includes(filter.toLowerCase())
     );
 
-    console.log('filteredContacts: ', filteredContacts);
     return (
       <>
         <ContactForm onSubmit={this.addContact} />
