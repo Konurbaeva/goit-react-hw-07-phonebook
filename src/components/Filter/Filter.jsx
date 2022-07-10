@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export function Filter({ filter, handleSearch }) {
   return (
     <div>
-      <h3>Find contacts by name</h3>
+      <p>Find contacts by name</p>
       <Input
         value={filter}
         onChange={handleSearch}
