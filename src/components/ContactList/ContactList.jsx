@@ -9,7 +9,6 @@ export class ContactList extends Component {
       <>
         <h2>Contacts</h2>
         <ul>
-          <h3>Find contacts by name</h3>
           {contacts.map(contact => (
             <li key={contact.id}>
               {contact.name} {contact.number}

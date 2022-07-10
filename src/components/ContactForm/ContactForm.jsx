@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
 // import * as Yup from 'yup';
+import styled from 'styled-components';
 
 export class ContactForm extends Component {
   state = {
@@ -37,7 +38,7 @@ export class ContactForm extends Component {
         <Form onSubmit={this.handleSubmit}>
           <label htmlFor="name">
             Name
-            <Field
+            <Input
               type="text"
               name="name"
               value={this.state.name}
@@ -49,7 +50,7 @@ export class ContactForm extends Component {
             />
           </label>
           <label htmlFor="number">
-            <Field
+            <Input
               type="tel"
               name="number"
               placeholder="Enter number"
@@ -60,11 +61,29 @@ export class ContactForm extends Component {
               required
             />
           </label>
-          {/* <button type="submit" onSubmit={this.props.addContact}> */}
 
-          <button type="submit">Add contact</button>
+          <Button type="submit">Add contact</Button>
         </Form>
       </Formik>
     );
   }
 }
+
+const Input = styled(Field)`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: ${props => props.inputColor || 'palevioletred'};
+  background: pink;
+  border: none;
+  border-radius: 3px;
+`;
+
+const Button = styled.button`
+  background: ${props => (props.primary ? 'palevioletred' : 'white')};
+  color: ${props => (props.primary ? 'white' : 'palevioletred')};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
