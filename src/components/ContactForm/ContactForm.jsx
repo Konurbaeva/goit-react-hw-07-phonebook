@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 import styled from 'styled-components';
 
 export class ContactForm extends Component {
@@ -31,10 +31,10 @@ export class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <Formik
-
-      // validationSchema={Yup.object().shape({
-      //   name: Yup.string().required('Required'),
-      // })}
+        validationSchema={Yup.object().shape({
+          name: Yup.string().required('Required'),
+          number: Yup.string().required('Required'),
+        })}
       >
         <FormBorder onSubmit={this.handleSubmit}>
           <label htmlFor="name">
