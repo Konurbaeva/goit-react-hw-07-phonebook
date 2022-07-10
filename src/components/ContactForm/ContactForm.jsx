@@ -50,6 +50,7 @@ export class ContactForm extends Component {
               required
             />
           </label>
+          <br />
           <label htmlFor="number">
             Number
             <Input
@@ -72,8 +73,8 @@ export class ContactForm extends Component {
 }
 
 const FormBorder = styled(Form)`
+  border: ${props => props.theme.borders.normal} black;
   padding: 10px;
-  border: 1px solid black;
   border-radius: 5px;
   width: 320px;
 `;
