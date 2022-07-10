@@ -28,6 +28,7 @@ export class ContactForm extends Component {
     this.setState({ name: '', number: '' });
   };
   render() {
+    const { name, number } = this.state;
     return (
       <Formik
 
@@ -35,13 +36,13 @@ export class ContactForm extends Component {
       //   name: Yup.string().required('Required'),
       // })}
       >
-        <Form onSubmit={this.handleSubmit}>
+        <FormBorder onSubmit={this.handleSubmit}>
           <label htmlFor="name">
             Name
             <Input
               type="text"
               name="name"
-              value={this.state.name}
+              value={name}
               onChange={this.handleChange}
               placeholder="Enter name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -54,7 +55,7 @@ export class ContactForm extends Component {
               type="tel"
               name="number"
               placeholder="Enter number"
-              value={this.state.number}
+              value={number}
               onChange={this.handleChange}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -63,11 +64,15 @@ export class ContactForm extends Component {
           </label>
 
           <Button type="submit">Add contact</Button>
-        </Form>
+        </FormBorder>
       </Formik>
     );
   }
 }
+
+const FormBorder = styled(Form)`
+  border: 2px solid black;
+`;
 
 const Input = styled(Field)`
   padding: 0.5em;
