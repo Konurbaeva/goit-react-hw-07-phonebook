@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export function Filter({ filter, handleSearch }) {
   return (
@@ -23,3 +24,8 @@ const Input = styled.input`
   border: none;
   border-radius: 3px;
 `;
+
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+};

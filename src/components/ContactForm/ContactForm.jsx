@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export class ContactForm extends Component {
   state = {
@@ -97,3 +98,7 @@ const Button = styled.button`
   border: ${props => props.theme.colors.primary} palevioletred;
   border-radius: 3px;
 `;
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

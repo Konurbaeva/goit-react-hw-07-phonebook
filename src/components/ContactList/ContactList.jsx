@@ -1,6 +1,6 @@
 import { Component } from 'react';
-// import { Formik } from 'formik';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export class ContactList extends Component {
   render() {
@@ -30,3 +30,14 @@ const Button = styled.button`
   border: ${props => props.theme.colors.primary} palevioletred;
   border-radius: 3px;
 `;
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};
