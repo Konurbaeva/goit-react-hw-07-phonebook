@@ -1,5 +1,6 @@
 import { Component } from 'react';
 // import { Formik } from 'formik';
+import styled from 'styled-components';
 
 export class ContactList extends Component {
   render() {
@@ -12,7 +13,7 @@ export class ContactList extends Component {
           {contacts.map(contact => (
             <li key={contact.id}>
               {contact.name} {contact.number}
-              <button onClick={() => deleteContact(contact.id)}>Delete</button>
+              <Button onClick={() => deleteContact(contact.id)}>Delete</Button>
             </li>
           ))}
         </ul>
@@ -20,3 +21,13 @@ export class ContactList extends Component {
     );
   }
 }
+
+const Button = styled.button`
+  background: ${props => (props.primary ? 'palevioletred' : 'white')};
+  color: ${props => (props.primary ? 'white' : 'palevioletred')};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;

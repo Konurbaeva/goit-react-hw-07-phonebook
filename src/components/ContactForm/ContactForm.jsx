@@ -51,6 +51,7 @@ export class ContactForm extends Component {
             />
           </label>
           <label htmlFor="number">
+            Number
             <Input
               type="tel"
               name="number"
@@ -71,7 +72,10 @@ export class ContactForm extends Component {
 }
 
 const FormBorder = styled(Form)`
-  border: 2px solid black;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 320px;
 `;
 
 const Input = styled(Field)`
