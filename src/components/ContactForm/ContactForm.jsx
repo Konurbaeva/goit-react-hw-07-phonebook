@@ -1,47 +1,11 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup';
-import styled from 'styled-components';
+// import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
+import * as yup from 'yup';
 
-const ErrorText = styled.p`
-  color: red;
-`;
-
-const FormError = ({ name }) => {
-  return (
-    <ErrorMessage
-      name={name}
-      render={message => <ErrorText>{message}</ErrorText>}
-    />
-  );
-};
-
-const FormBorder = styled(Form)`
-  border: ${props => props.theme.borders.normal} black;
-  padding: 10px;
-  border-radius: 5px;
-  width: 320px;
-`;
-
-const Input = styled(Field)`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: ${props => props.theme.colors.primary};
-  background: ${props => props.theme.colors.accent};
-  border: none;
-  border-radius: 3px;
-`;
-
-const Button = styled.button`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  padding: 0.5em;
-  color: ${props => props.theme.colors.primary};
-  border: ${props => props.theme.colors.primary} palevioletred;
-  border-radius: 3px;
-`;
+import { FormBorder, Input, FormError, Button } from './ContactForm.styled';
 
 const schema = yup.object().shape({
   id: yup.string().min(2).max(16).required(),
