@@ -30,11 +30,6 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-// const ContactSchema = Yup.object().shape({
-//   name: Yup.string().required('Required'),
-//   number: Yup.string().required('Required'),
-// });
-
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -58,8 +53,6 @@ export const ContactForm = ({ onSubmit }) => (
         number: '',
       }}
       validationSchema={ContactSchema}
-      // onSubmit={onSubmit}
-
       onSubmit={(values, { resetForm }) => {
         values.id = nanoid();
         onSubmit(values);
@@ -70,22 +63,10 @@ export const ContactForm = ({ onSubmit }) => (
     >
       <FormBorder>
         <label htmlFor="name">Name</label>
-        <Input
-          id="name"
-          name="name"
-          placeholder="Enter name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          required
-        />
+        <Input id="name" name="name" placeholder="Enter name" />
         <br />
         <label htmlFor="number">Number</label>
-        <Input
-          id="number"
-          name="number"
-          placeholder="Enter number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          required
-        />
+        <Input id="number" name="number" placeholder="Enter number" />
         <Button type="submit">Add contact</Button>
       </FormBorder>
     </Formik>
