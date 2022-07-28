@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
+import * as yup from 'yup';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
@@ -30,19 +31,10 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-const ContactSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required(
-      'Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore'
-    ),
-  number: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required(
-      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    ),
+const schema = yup.object().shape({
+  id: yup.string().min(2).max(16).required(),
+  name: yup.string().min(2).max(16).required(),
+  number: yup.string().min(2).max(16).required(),
 });
 
 export const ContactForm = ({ onSubmit }) => (
@@ -52,11 +44,10 @@ export const ContactForm = ({ onSubmit }) => (
         name: '',
         number: '',
       }}
-      validationSchema={ContactSchema}
+      validationSchema={schema}
       onSubmit={(values, { resetForm }) => {
         values.id = nanoid();
         onSubmit(values);
-        console.log(values);
 
         resetForm();
       }}
