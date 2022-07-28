@@ -30,7 +30,6 @@ export class App extends Component {
     if (this.state.contacts.find(({ number }) => contact.number === number))
       return alert(`number is already in contacts`);
 
-    // contact.id = nanoid();
     this.setState(prevState => ({
       contacts: [...prevState.contacts, contact],
     }));

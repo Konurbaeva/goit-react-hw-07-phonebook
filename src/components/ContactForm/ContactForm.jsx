@@ -1,5 +1,4 @@
 import { Formik, Form, Field } from 'formik';
-// import * as Yup from 'yup';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
