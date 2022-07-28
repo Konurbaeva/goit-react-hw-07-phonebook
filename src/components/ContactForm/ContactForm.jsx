@@ -99,6 +99,13 @@ export const ContactForm = ({ onSubmit }) => (
       }}
       validationSchema={ContactSchema}
       onSubmit={onSubmit}
+
+      // handleSubmit = (values, { resetForm }) => {
+      //   values.id = nanoid();
+      //   onAddNewContact(values);
+      //   console.log(values);
+      //   resetForm();
+      // };
     >
       <FormBorder>
         <label htmlFor="name">Name</label>

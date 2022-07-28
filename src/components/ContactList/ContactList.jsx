@@ -16,15 +16,21 @@ export class ContactList extends Component {
   render() {
     const { contacts, deleteContact } = this.props;
 
-    console.log('contacts: ', contacts);
-
     return (
       <>
-        <ul>
+        {/* <ul>
           {contacts.map(contact => (
             <li key={contact.id}>
               {contact.name} {contact.number}
               <Button onClick={() => deleteContact(contact.id)}>Delete</Button>
+            </li>
+          ))}
+        </ul> */}
+        <ul>
+          {contacts.map(({ id, name, number }) => (
+            <li key={id}>
+              {name} {number}
+              <Button onClick={() => deleteContact(id)}>Delete</Button>
             </li>
           ))}
         </ul>
