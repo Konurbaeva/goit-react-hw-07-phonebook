@@ -29,30 +29,98 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-export const ContactForm = () => (
+// const ContactSchema = Yup.object().shape({
+//   name: Yup.string().required('Required'),
+//   number: Yup.string().required('Required'),
+// });
+
+const ContactSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required(
+      'Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore'
+    ),
+  number: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required(
+      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
+    ),
+});
+
+// onSubmit
+
+// export const ContactForm = () => (
+//   <div>
+//     <Formik
+//       initialValues={{
+//         name: '',
+//         number: '',
+//       }}
+//       validationSchema={ContactSchema}
+//       onSubmit={async values => {
+//         await new Promise(r => setTimeout(r, 500));
+//         alert(JSON.stringify(values, null, 2));
+//       }}
+//     >
+//       <FormBorder>
+//         <label htmlFor="name">Name</label>
+//         <Input
+//           id="name"
+//           name="name"
+//           placeholder="Enter name"
+//           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+//           required
+//         />
+//         <br />
+//         <label htmlFor="number">Number</label>
+//         <Input
+//           id="number"
+//           name="number"
+//           placeholder="Enter number"
+//           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+//           required
+//         />
+
+//         {/* <Button type="submit">Add contact</Button> */}
+//         <button type="submit">Add contact</button>
+//       </FormBorder>
+//     </Formik>
+//   </div>
+// );
+
+export const ContactForm = ({ onSubmit }) => (
   <div>
     <Formik
       initialValues={{
         name: '',
         number: '',
       }}
-      validationSchema={Yup.object().shape({
-        name: Yup.string().required('Required'),
-        number: Yup.string().required('Required'),
-      })}
-      onSubmit={async values => {
-        await new Promise(r => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
-      }}
+      validationSchema={ContactSchema}
+      onSubmit={onSubmit}
     >
       <FormBorder>
         <label htmlFor="name">Name</label>
-        <Input id="name" name="name" placeholder="Provide name" />
+        <Input
+          id="name"
+          name="name"
+          placeholder="Enter name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          required
+        />
         <br />
         <label htmlFor="number">Number</label>
-        <Input id="number" name="number" placeholder="Provide number" />
+        <Input
+          id="number"
+          name="number"
+          placeholder="Enter number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          required
+        />
 
-        <Button type="submit">Submit</Button>
+        {/* <Button type="submit">Add contact</Button> */}
+        <button type="submit">Add contact</button>
       </FormBorder>
     </Formik>
   </div>

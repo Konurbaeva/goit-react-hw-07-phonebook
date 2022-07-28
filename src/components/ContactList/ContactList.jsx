@@ -16,6 +16,8 @@ export class ContactList extends Component {
   render() {
     const { contacts, deleteContact } = this.props;
 
+    console.log('contacts: ', contacts);
+
     return (
       <>
         <ul>
@@ -34,7 +36,7 @@ export class ContactList extends Component {
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.string,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     })
