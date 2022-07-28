@@ -1,5 +1,3 @@
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
-
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
