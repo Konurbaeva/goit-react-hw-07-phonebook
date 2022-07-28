@@ -1,8 +1,21 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
+
+const ErrorText = styled.p`
+  color: red;
+`;
+
+const FormError = ({ name }) => {
+  return (
+    <ErrorMessage
+      name={name}
+      render={message => <ErrorText>{message}</ErrorText>}
+    />
+  );
+};
 
 const FormBorder = styled(Form)`
   border: ${props => props.theme.borders.normal} black;
@@ -54,9 +67,11 @@ export const ContactForm = ({ onSubmit }) => (
       <FormBorder>
         <label htmlFor="name">Name</label>
         <Input id="name" name="name" placeholder="Enter name" />
+        <FormError name="name" />
         <br />
         <label htmlFor="number">Number</label>
         <Input id="number" name="number" placeholder="Enter number" />
+        <FormError name="number" />
         <Button type="submit">Add contact</Button>
       </FormBorder>
     </Formik>
