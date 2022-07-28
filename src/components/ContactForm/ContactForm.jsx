@@ -2,6 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 
 const FormBorder = styled(Form)`
   border: ${props => props.theme.borders.normal} black;
@@ -49,47 +50,6 @@ const ContactSchema = Yup.object().shape({
     ),
 });
 
-// onSubmit
-
-// export const ContactForm = () => (
-//   <div>
-//     <Formik
-//       initialValues={{
-//         name: '',
-//         number: '',
-//       }}
-//       validationSchema={ContactSchema}
-//       onSubmit={async values => {
-//         await new Promise(r => setTimeout(r, 500));
-//         alert(JSON.stringify(values, null, 2));
-//       }}
-//     >
-//       <FormBorder>
-//         <label htmlFor="name">Name</label>
-//         <Input
-//           id="name"
-//           name="name"
-//           placeholder="Enter name"
-//           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//           required
-//         />
-//         <br />
-//         <label htmlFor="number">Number</label>
-//         <Input
-//           id="number"
-//           name="number"
-//           placeholder="Enter number"
-//           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-//           required
-//         />
-
-//         {/* <Button type="submit">Add contact</Button> */}
-//         <button type="submit">Add contact</button>
-//       </FormBorder>
-//     </Formik>
-//   </div>
-// );
-
 export const ContactForm = ({ onSubmit }) => (
   <div>
     <Formik
@@ -98,14 +58,15 @@ export const ContactForm = ({ onSubmit }) => (
         number: '',
       }}
       validationSchema={ContactSchema}
-      onSubmit={onSubmit}
+      // onSubmit={onSubmit}
 
-      // handleSubmit = (values, { resetForm }) => {
-      //   values.id = nanoid();
-      //   onAddNewContact(values);
-      //   console.log(values);
-      //   resetForm();
-      // };
+      onSubmit={(values, { resetForm }) => {
+        values.id = nanoid();
+        onSubmit(values);
+        console.log(values);
+
+        resetForm();
+      }}
     >
       <FormBorder>
         <label htmlFor="name">Name</label>
@@ -125,9 +86,7 @@ export const ContactForm = ({ onSubmit }) => (
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           required
         />
-
-        {/* <Button type="submit">Add contact</Button> */}
-        <button type="submit">Add contact</button>
+        <Button type="submit">Add contact</Button>
       </FormBorder>
     </Formik>
   </div>
