@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ContactForm } from './components/ContactForm';
 import { ContactList } from './components/ContactList';
 import { Filter } from './components/Filter';
+import { nanoid } from 'nanoid';
 
 export function App() {
   const [contacts, setContacts] = useState([
@@ -32,13 +33,35 @@ export function App() {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const addContact = contact => {
-    if (contacts.find(({ name }) => contact.name === name))
-      return alert(`name is already in contacts`);
-    if (contacts.find(({ number }) => contact.number === number))
-      return alert(`number is already in contacts`);
+  // const addContact = contact => {
+  //   if (contacts.find(({ name }) => contact.name === name))
+  //     return alert(`name is already in contacts`);
+  //   if (contacts.find(({ number }) => contact.number === number))
+  //     return alert(`number is already in contacts`);
 
-    setContacts(prevState => [...prevState.contacts, contact]);
+  //   setContacts(prevState => [...prevState.contacts, contact]);
+  // };
+
+  const formSubmitHandler = ({ name, number }) => {
+    const newName = {
+      id: nanoid(),
+      name,
+      number,
+    };
+
+    const find = contacts.find(
+      ({ name }) =>
+        newName.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+    );
+
+    if (find) {
+      alert(`${find.name} is alredy in contact`);
+      return;
+    }
+
+    // setContacts([newName, ...contacts]);
+
+    setContacts(prevState => [...prevState.contacts, newName]);
   };
 
   const deleteContact = contactId => {
@@ -48,12 +71,12 @@ export function App() {
     setContacts(contacts.filter(contact => contact.id !== contactId));
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
 
-    form.reset();
-  };
+  //   form.reset();
+  // };
 
   const handleSearch = e => {
     const searchQuery = e.currentTarget.value;
@@ -68,7 +91,8 @@ export function App() {
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} />
+      {/* <ContactForm onSubmit={addContact} /> */}
+      <ContactForm onSubmit={formSubmitHandler} />
       <h2>Contacts</h2>
       <Filter filter={filter} handleSearch={handleSearch} />
       <ContactList contacts={filteredContacts} deleteContact={deleteContact} />
