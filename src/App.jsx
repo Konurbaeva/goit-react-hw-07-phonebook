@@ -30,7 +30,6 @@ export function App() {
     }
 
     setContacts([newName, ...contacts]);
-    // setContacts(prevState => [...prevState.contacts, newName]);
   };
 
   const deleteContact = contactId => {
