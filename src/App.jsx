@@ -67,7 +67,7 @@ export function App() {
         color: '#010101',
       }}
     >
-      <ContactForm onSubmit={formSubmitHandler} />
+      <ContactForm onFormSubmit={formSubmitHandler} />
       <Filter filter={filter} handleSearch={handleSearch} />
       <ContactList contacts={filteredContacts} deleteContact={deleteContact} />
     </div>

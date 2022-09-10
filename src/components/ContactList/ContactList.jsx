@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -12,23 +11,38 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-export class ContactList extends Component {
-  render() {
-    const { contacts, deleteContact } = this.props;
+// export class ContactList extends Component {
+//   render() {
+//     const { contacts, deleteContact } = this.props;
 
+//     return (
+//       <>
+//         <ul>
+//           {contacts.map(({ id, name, number }) => (
+//             <li key={id}>
+//               {name} {number}
+//               <Button onClick={() => deleteContact(id)}>Delete</Button>
+//             </li>
+//           ))}
+//         </ul>
+//       </>
+//     );
+//   }
+// }
+
+export function ContactList({ contacts, deleteContact }) {
+  return contacts.map(({ name, number, id }) => {
     return (
-      <>
-        <ul>
-          {contacts.map(({ id, name, number }) => (
-            <li key={id}>
-              {name} {number}
-              <Button onClick={() => deleteContact(id)}>Delete</Button>
-            </li>
-          ))}
-        </ul>
-      </>
+      <ul key={id}>
+        <li>
+          {name} {number}
+        </li>
+        <Button type="button" onClick={() => deleteContact(id)}>
+          Delete
+        </Button>
+      </ul>
     );
-  }
+  });
 }
 
 ContactList.propTypes = {
