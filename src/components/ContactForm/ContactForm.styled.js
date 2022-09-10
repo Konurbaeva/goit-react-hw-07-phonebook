@@ -6,12 +6,12 @@ export const ErrorText = styled.p`
 `;
 
 export const FormError = ({ name }) => {
-    return (
-        <ErrorMessage
-            name={name}
-            render={message => <ErrorText>{message}</ErrorText>}
-        />
-    );
+  return (
+    <ErrorMessage
+      name={name}
+      render={message => <ErrorText>{message}</ErrorText>}
+    />
+  );
 };
 
 export const FormBorder = styled(Form)`
@@ -31,7 +31,7 @@ export const Input = styled(Field)`
 `;
 
 export const Button = styled.button`
-  font-size: 1em;
+  font-size: 0.5em;
   margin: 1em;
   padding: 0.25em 1em;
   padding: 0.5em;
