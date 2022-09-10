@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Button = styled.button`
-  font-size: 1em;
+  font-size: 0.5em;
   margin: 1em;
   padding: 0.25em 1em;
   padding: 0.5em;
