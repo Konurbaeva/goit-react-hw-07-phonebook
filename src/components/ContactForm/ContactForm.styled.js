@@ -20,12 +20,13 @@ export const Button = styled.button`
   border-radius: 3px;
 `;
 
-export const Form = styled.form`
+export const FormBorder = styled(Form)`
   border: ${props => props.theme.borders.normal} black;
   padding: 10px;
   border-radius: 5px;
   width: 320px;
 `;
+
 
 // export const ErrorText = styled.p`
 //   color: red;
@@ -39,13 +40,6 @@ export const Form = styled.form`
 //     />
 //   );
 // };
-
-// export const FormBorder = styled(Form)`
-//   border: ${props => props.theme.borders.normal} black;
-//   padding: 10px;
-//   border-radius: 5px;
-//   width: 320px;
-// `;
 
 // export const Input = styled.input`
 //   padding: 0.5em;

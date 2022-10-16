@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {
-  Form,
+  FormBorder,
   Input,
   Button
 } from './ContactForm.styled';
@@ -15,10 +15,15 @@ export function ContactForm({ onFormSubmit }) {
   const value = useSelector(state => state.value)
   const dispatch = useDispatch();
 
+  console.log(value)
 
   const reset = () => {
-    setName('');
-    setNumber('');
+    // setName('');
+    // setNumber('');
+    dispatch(deleteContact({
+      name, 
+      number
+   }));
   };
 
   // const handleSubmit = e => {
@@ -61,7 +66,7 @@ export function ContactForm({ onFormSubmit }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <FormBorder onSubmit={handleSubmit}>
       Name
       <Input
         value={name}
@@ -85,7 +90,7 @@ export function ContactForm({ onFormSubmit }) {
         required
       />
       <Button type="submit">Add contact</Button>
-    </Form>
+    </FormBorder>
   );
 }
 
