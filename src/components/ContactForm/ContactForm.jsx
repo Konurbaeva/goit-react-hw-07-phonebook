@@ -1,47 +1,48 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import {
+  Form,
+  Input,
+  Button
+} from './ContactForm.styled';
 import { useState, useEffect } from 'react';
-
-const Form = styled.form`
-  border: ${props => props.theme.borders.normal} black;
-  padding: 10px;
-  border-radius: 5px;
-  width: 320px;
-`;
-const Input = styled.input`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: ${props => props.theme.colors.primary};
-  background: ${props => props.theme.colors.accent};
-  border: none;
-  border-radius: 3px;
-`;
-
-const Button = styled.button`
-  font-size: 0.5em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  padding: 0.5em;
-  color: ${props => props.theme.colors.primary};
-  border: ${props => props.theme.colors.primary} palevioletred;
-  border-radius: 3px;
-`;
+import { useSelector, useDispatch } from 'react-redux';
+import { addNewContact, deleteContact } from "../../redux/store"
 
 export function ContactForm({ onFormSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const value = useSelector(state => state.value)
+  const dispatch = useDispatch();
+
 
   const reset = () => {
     setName('');
     setNumber('');
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   onFormSubmit({ name, number });
+  //   reset();
+  // };
 
-    onFormSubmit({ name, number });
-    reset();
+    const handleSubmit = e => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      console.log(form.elements);
+      // dispatch(addNewContact(form.elements.login.value));
+
+     //  form.elements.name.value
+      //  form.elements.number.value
+      dispatch(addNewContact({
+         name, 
+         number
+      }));
+      reset();
   };
+
+
 
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(name));
