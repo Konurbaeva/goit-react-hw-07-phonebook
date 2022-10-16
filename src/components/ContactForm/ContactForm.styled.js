@@ -1,7 +1,6 @@
-import { Form, Field } from 'formik';
 import styled from 'styled-components';
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   padding: 0.5em;
   margin: 0.5em;
   color: ${props => props.theme.colors.primary};
@@ -20,7 +19,7 @@ export const Button = styled.button`
   border-radius: 3px;
 `;
 
-export const FormBorder = styled(Form)`
+export const FormBorder = styled.form`
   border: ${props => props.theme.borders.normal} black;
   padding: 10px;
   border-radius: 5px;
