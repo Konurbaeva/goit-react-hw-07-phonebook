@@ -1,53 +1,49 @@
 import PropTypes from 'prop-types';
-import {
-  FormBorder,
-  Input,
-  Button
-} from './ContactForm.styled';
+import { FormBorder, Input, Button } from './ContactForm.styled';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addNewContact, deleteContact } from "../../redux/store"
+import { addNewContact, deleteContact } from '../../redux/store';
+
+// import store from './app/store';
 
 export function ContactForm({ onFormSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const value = useSelector(state => state.value)
+  const value = useSelector(state => state.value);
   const dispatch = useDispatch();
 
-  console.log(value)
+  console.log(value);
 
   const reset = () => {
     // setName('');
     // setNumber('');
-    dispatch(deleteContact({
-      name, 
-      number
-   }));
+    dispatch(
+      deleteContact({
+        name,
+        number,
+      })
+    );
   };
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   onFormSubmit({ name, number });
-  //   reset();
-  // };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    console.log('form.elements: ', form.elements);
 
-    const handleSubmit = e => {
-      e.preventDefault();
-      const form = e.currentTarget;
-      console.log(form.elements);
-      // dispatch(addNewContact(form.elements.login.value));
+    // onFormSubmit({ name, number });
+    // dispatch(addNewContact(form.elements.login.value));
 
-     //  form.elements.name.value
-      //  form.elements.number.value
-      dispatch(addNewContact({
-         name, 
-         number
-      }));
-      reset();
+    //  form.elements.name.value
+    //  form.elements.number.value
+    dispatch(
+      addNewContact({
+        name,
+        number,
+      })
+    );
+    reset();
   };
-
-
 
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(name));

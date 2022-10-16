@@ -22,11 +22,8 @@ export const { addNewContact, deleteContact } = myValueSlice.actions;
 
 console.log('myValueSlice.actions ', myValueSlice.actions);
 
-
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     myValue: myValueSlice.reducer,
   },
 });
-
-export default store;

@@ -1,4 +1,4 @@
-import { Form, Field, ErrorMessage } from 'formik';
+import { Form, Field } from 'formik';
 import styled from 'styled-components';
 
 export const Input = styled(Field)`
@@ -26,7 +26,6 @@ export const FormBorder = styled(Form)`
   border-radius: 5px;
   width: 320px;
 `;
-
 
 // export const ErrorText = styled.p`
 //   color: red;
