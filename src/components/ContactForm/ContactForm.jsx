@@ -4,16 +4,16 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addNewContact, deleteContact } from '../../redux/store';
 
-// import store from './app/store';
-
 export function ContactForm({ onFormSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const value = useSelector(state => state.value);
+ // const value = useSelector(state => state.myValue);
+
+  const value = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
-  console.log(value);
+  console.log('value: ', value);
 
   const reset = () => {
     // setName('');
