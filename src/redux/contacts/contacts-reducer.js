@@ -6,7 +6,7 @@ const initialState = {
       ]
 }  
 
-const contactsReducer = (store = initialState, {type, payload}) => {
+const contactsReducer = (store = initialState.contacts, {type, payload}) => {
     switch(type) {
         case "contacts/add":
             return [...store, payload]
