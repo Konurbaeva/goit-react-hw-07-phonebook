@@ -1,49 +1,31 @@
-import PropTypes from 'prop-types';
+
 import { FormBorder, Input, Button } from './ContactForm.styled';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addNewContact, deleteContact } from '../../redux/contacts/contacts-actions';
 
-export function ContactForm({ onFormSubmit }) {
+export function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
- // const value = useSelector(state => state.myValue);
 
   const value = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   console.log('value: ', value);
 
-  const reset = () => {
-    // setName('');
-    // setNumber('');
-    // dispatch(
-    //   deleteContact({
-    //     name,
-    //     number,
-    //   })
-    // );
-    dispatch(deleteContact());
-  };
-
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     console.log('form.elements: ', form.elements);
-
-    // onFormSubmit({ name, number });
+    
     // dispatch(addNewContact(form.elements.login.value));
 
-    //  form.elements.name.value
-    //  form.elements.number.value
     dispatch(
       addNewContact({
         name,
         number,
       })
     );
-    reset();
   };
 
   useEffect(() => {
@@ -90,7 +72,3 @@ export function ContactForm({ onFormSubmit }) {
     </FormBorder>
   );
 }
-
-ContactForm.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
-};

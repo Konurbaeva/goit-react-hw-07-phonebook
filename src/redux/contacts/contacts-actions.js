@@ -9,10 +9,23 @@ export const addNewContact = payload => {
         }
     }
 }
-
-export const deleteContact = payload=> {
+export const deleteContact = contactId=> {
     return {
         type: "contacts/delete",
-        payload
+        payload:contactId
     }
 }
+
+// export const deleteContact = payload=> {
+//     return {
+//         type: "contacts/delete",
+//         payload
+//     }
+// }
+
+// export const deleteContact = payload=> {
+//     return {
+//         type: "contacts/delete",
+//         payload
+//     }
+// }

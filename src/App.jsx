@@ -2,17 +2,13 @@ import { useEffect, useState } from 'react';
 import { ContactForm } from './components/ContactForm';
 import { ContactList } from './components/ContactList';
 import { Filter } from './components/Filter';
-import { nanoid } from 'nanoid';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 
 export function App() {
   const [filter, setFilter] = useState('');
-
-  // const deleteContact = contactId => {
-  //   setContacts(prevContact =>
-  //     prevContact.filter(contact => contact.id !== contactId)
-  //   );
-  // };
+  const dispatch = useDispatch();
 
   const handleSearch = e => {
     let lowerCase = e.target.value.toLowerCase();
@@ -28,6 +24,16 @@ export function App() {
     }
   }, []);
 
+  //   const deleteContact = contactId => {
+  //   setContacts(prevContact =>
+  //     prevContact.filter(contact => contact.id !== contactId)
+  //   );
+  // };
+
+  const deleteContact = (id) => {
+    const action = deleteContact(id);
+    dispatch(action);
+}
 
   return (
     <div
@@ -42,7 +48,6 @@ export function App() {
       {/* <ContactForm onFormSubmit={formSubmitHandler} /> */}
       <ContactForm/>
       <Filter filter={filter} handleSearch={handleSearch} />
-      {/* <ContactList deleteContact={deleteContact} /> */}
       <ContactList />
     </div>
   );

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
+// import { addNewContact, deleteContact } from '../../redux/contacts/contacts-actions';
+import { deleteContact } from '../../redux/contacts/contacts-actions';
 
 const Button = styled.button`
   font-size: 0.5em;
@@ -13,12 +14,18 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-export function ContactList({ deleteContact }) {
+export function ContactList() {
   // const value = useSelector(state => state.contacts);
   const contactsSelector = useSelector(getFilteredContacts)
   const dispatch = useDispatch();
 
-  console.log('dispatch: ', dispatch.actions);
+  const onDeleteContact = (id) => {
+    const action = deleteContact(id)
+ 
+    console.log('onDeleteContact dispatch: ', dispatch(action));
+
+    dispatch(action);
+  }
 
   return contactsSelector.map(({ name, number, id }) => {
     return (
@@ -26,10 +33,7 @@ export function ContactList({ deleteContact }) {
         <li>
           {name} {number}
         </li>
-        {/* <Button type="button" onClick={() => deleteContact(id)}>
-          Delete
-        </Button> */}
-         <Button type="button" onClick={() => dispatch(deleteContact(id))}>
+         <Button type="button" onClick={() => onDeleteContact(id)}>
           Delete
         </Button>
       </ul>
@@ -37,6 +41,3 @@ export function ContactList({ deleteContact }) {
   });
 }
 
-ContactList.propTypes = {
-  deleteContact: PropTypes.func.isRequired,
-};
