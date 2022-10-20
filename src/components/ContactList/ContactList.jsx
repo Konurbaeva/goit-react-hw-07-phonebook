@@ -13,12 +13,12 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-export function ContactList({ contacts, deleteContact }) {
+export function ContactList({ deleteContact }) {
   // const value = useSelector(state => state.contacts);
   const contactsSelector = useSelector(getFilteredContacts)
- // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  console.log('contactsSelector: ', contactsSelector);
+  console.log('dispatch: ', dispatch.actions);
 
   return contactsSelector.map(({ name, number, id }) => {
     return (
@@ -26,7 +26,10 @@ export function ContactList({ contacts, deleteContact }) {
         <li>
           {name} {number}
         </li>
-        <Button type="button" onClick={() => deleteContact(id)}>
+        {/* <Button type="button" onClick={() => deleteContact(id)}>
+          Delete
+        </Button> */}
+         <Button type="button" onClick={() => dispatch(deleteContact(id))}>
           Delete
         </Button>
       </ul>
@@ -35,12 +38,5 @@ export function ContactList({ contacts, deleteContact }) {
 }
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   deleteContact: PropTypes.func.isRequired,
 };

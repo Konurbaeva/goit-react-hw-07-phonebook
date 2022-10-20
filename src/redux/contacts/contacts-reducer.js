@@ -10,9 +10,13 @@ const contactsReducer = (store = initialState.contacts, {type, payload}) => {
     switch(type) {
         case "contacts/add":
             return [...store, payload]
-        case "contacts/delete":
-               const result = store.filter(item => item.id !== payload)
-               return [...store, result]
+
+            case "contacts/delete":
+                const result = store.filter(item => item.id !== payload.id)
+                return [...store, result]
+        // case "contacts/delete":
+        //        const result = store.filter(item => item.id !== payload)
+        //        return [...store, result]
 
             default:
                 return store

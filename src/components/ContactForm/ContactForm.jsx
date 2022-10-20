@@ -18,12 +18,13 @@ export function ContactForm({ onFormSubmit }) {
   const reset = () => {
     // setName('');
     // setNumber('');
-    dispatch(
-      deleteContact({
-        name,
-        number,
-      })
-    );
+    // dispatch(
+    //   deleteContact({
+    //     name,
+    //     number,
+    //   })
+    // );
+    dispatch(deleteContact());
   };
 
   const handleSubmit = e => {
