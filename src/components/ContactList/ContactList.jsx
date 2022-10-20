@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { addNewContact, deleteContact } from '../../redux/store';
 
 const Button = styled.button`
   font-size: 0.5em;
@@ -12,6 +14,12 @@ const Button = styled.button`
 `;
 
 export function ContactList({ contacts, deleteContact }) {
+  const value = useSelector(state => state.contacts);
+ // const dispatch = useDispatch();
+
+  console.log('value: ', value);
+
+
   return contacts.map(({ name, number, id }) => {
     return (
       <ul key={id}>
