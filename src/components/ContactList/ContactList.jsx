@@ -20,7 +20,7 @@ export function ContactList({ contacts, deleteContact }) {
 
   console.log('contactsSelector: ', contactsSelector);
 
-  return contacts.map(({ name, number, id }) => {
+  return contactsSelector.map(({ name, number, id }) => {
     return (
       <ul key={id}>
         <li>
