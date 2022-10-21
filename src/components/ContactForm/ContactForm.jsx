@@ -1,11 +1,9 @@
 
 import { FormBorder, Input, Button } from './ContactForm.styled';
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import { addNewContact } from '../../redux/contacts/contacts-actions';
 
 export function ContactForm() {
-
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -14,28 +12,10 @@ export function ContactForm() {
     dispatch(addNewContact(form.elements.name.value, form.elements.number.value));
   };
 
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(name));
-  // }, [name]);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(number));
-  // }, [number]);
-
-  // const handleChangeName = e => {
-  //   setName(e.target.value);
-  // };
-
-  // const handleChangeNumber = e => {
-  //   setNumber(e.target.value);
-  // };
-
   return (
     <FormBorder onSubmit={handleSubmit}>
       Name
       <Input
-       // value={name}
-       // onChange={handleChangeName}
         placeholder="Enter name"
         type="text"
         name="name"
@@ -45,8 +25,6 @@ export function ContactForm() {
       />
       Number
       <Input
-       // value={number}
-       // onChange={handleChangeNumber}
         type="tel"
         name="number"
         placeholder="Enter phone number"
