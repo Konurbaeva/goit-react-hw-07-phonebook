@@ -1,28 +1,10 @@
-import { useEffect, useState } from 'react';
+
 import { ContactForm } from './components/ContactForm';
 import { ContactList } from './components/ContactList';
 import { Filter } from './components/Filter';
 
-import { useSelector, useDispatch } from 'react-redux';
-
 
 export function App() {
-  const [filter, setFilter] = useState('');
-  const dispatch = useDispatch();
-
-  const handleSearch = e => {
-    let lowerCase = e.target.value.toLowerCase();
-    setFilter(lowerCase);
-  };
-
-  useEffect(() => {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-
-    if (parsedContacts) {
-     //  setContacts(parsedContacts);
-    }
-  }, []);
 
   return (
     <div
@@ -34,9 +16,8 @@ export function App() {
         color: '#010101',
       }}
     >
-      {/* <ContactForm onFormSubmit={formSubmitHandler} /> */}
       <ContactForm/>
-      <Filter filter={filter} handleSearch={handleSearch} />
+      <Filter/>
       <ContactList />
     </div>
   );
