@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
-// import { addNewContact, deleteContact } from '../../redux/contacts/contacts-actions';
 import { deleteContact } from '../../redux/contacts/contacts-actions';
 
 const Button = styled.button`
@@ -15,15 +14,11 @@ const Button = styled.button`
 `;
 
 export function ContactList() {
-  // const value = useSelector(state => state.contacts);
   const contactsSelector = useSelector(getFilteredContacts)
   const dispatch = useDispatch();
 
   const onDeleteContact = (id) => {
     const action = deleteContact(id)
- 
-    console.log('onDeleteContact dispatch: ', dispatch(action));
-
     dispatch(action);
   }
 
