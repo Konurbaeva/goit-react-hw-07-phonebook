@@ -24,17 +24,6 @@ export function App() {
     }
   }, []);
 
-  //   const deleteContact = contactId => {
-  //   setContacts(prevContact =>
-  //     prevContact.filter(contact => contact.id !== contactId)
-  //   );
-  // };
-
-  const deleteContact = (id) => {
-    const action = deleteContact(id);
-    dispatch(action);
-}
-
   return (
     <div
       style={{

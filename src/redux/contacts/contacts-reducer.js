@@ -10,40 +10,14 @@ const contactsReducer = (store = initialState.contacts, {type, payload}) => {
     switch(type) {
         case "contacts/add":
             return [...store, payload]
-
-        // case "contacts/delete":
-        //        const result = store.filter(item => item.id !== payload)
-        //        return [...store, result]
-
         case "contacts/delete":
             console.log('STORE: ', store)
-            const result = store.filter(item => item !== payload.id)
-            return [...store, result]
+            const result = store.filter(item => item.id !== payload)
+            return result
 
             default:
                 return store
     }
 }
 
-
 export default contactsReducer;
-
-// const contactsReducer = (store = initialState.contacts, {type, payload}) => {
-//     switch(type) {
-//         case "contacts/add":
-//             return [...store, payload]
-
-//             case "contacts/delete":
-//                 const result = store.filter(item => item.id !== payload.id)
-//                 console.log('contacts/delete result: ', result)
-//                 return [...store, result]
-
-//         // case "contacts/delete":
-//         //        const result = store.filter(item => item.id !== payload)
-//         //        return [...store, result]
-//             default:
-//                 return store
-//     }
-// }
-
-// export default contactsReducer;
