@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
+// import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
 
-import { filterContact } from '../../redux/contacts/contacts-actions';
-import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
+// import { setFilter } from "../../redux/filter/filter-actions";
 
-import { setFilter } from "../../redux/filter/filter-actions";
+
+import { filterContact } from "../../redux/filter/filter-actions";
+import { getFilter } from "../../redux/filter/filter-selectors"
 
 const Input = styled.input`
   padding: 0.5em;
@@ -16,37 +18,17 @@ const Input = styled.input`
 `;
 
 export function Filter() {
-// const contactsSelector = useSelector(getFilteredContacts)
 const dispatch = useDispatch();
-// const filter = useSelector(getFilteredContacts);
-
-// const filter = useSelector(state => state.statusFilter);
-
-const filter = useSelector(getFilteredContacts);
+const filter = useSelector(getFilter);
 
 console.log('filter: ', filter)
 
-// const handleSearch = e => {
-//   let lowerCase = e.target.value.toLowerCase();
-//   setFilter(lowerCase);
-// };
-
-// const onFilterContact = e => {
-//   let lowerCase = e.target.value.toLowerCase();
-
-//   console.log('onFilterContact: ', lowerCase)
-
-//   const action = filterContact(lowerCase)
-//   dispatch(action);
-// }
-
-// const handleFilterChange = filter => dispatch(filterContact(filter));
-
-//const handleFilterChange = filter => dispatch(setFilter(filter));
-
 const handleChange = (e) => {
   const { value } = e.target;
-  dispatch(setFilter(value));
+ // dispatch(filterContact(value));
+
+ const action = filterContact(value)
+ dispatch(action);
 }
 
   
@@ -54,12 +36,11 @@ const handleChange = (e) => {
     <div>
       <p>Find contacts by name</p>
       <Input
-       // value={onFilterContact}
-        // onChange={handleSearch}
         onChange={handleChange}
         placeholder="Search ..."
         type="text"
-        name="search"
+        name="filter" 
+        value={filter} 
       />
     </div>
   );

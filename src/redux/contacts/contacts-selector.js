@@ -4,3 +4,4 @@ export const getFilteredContacts =({contacts, filter}) => {
     }
    return contacts.name.toLowerCase().includes(filter.toLowerCase())
 }
+

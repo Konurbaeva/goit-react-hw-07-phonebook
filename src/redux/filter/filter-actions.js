@@ -1,6 +1,13 @@
-export const setFilter = payload => {
+// export const setFilter = payload => {
+//     return {
+//         type: "filter/set",
+//         payload
+//     }
+// }
+
+export const filterContact = value => {
     return {
-        type: "filter/set",
-        payload
+        type: "contacts/filter",
+        payload: value
     }
 }

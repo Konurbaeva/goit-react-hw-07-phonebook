@@ -22,17 +22,30 @@ export function ContactList() {
     dispatch(action);
   }
 
-  return contactsSelector.map(({ name, number, id }) => {
-    return (
-      <ul key={id}>
-        <li>
-          {name} {number}
-        </li>
-         <Button type="button" onClick={() => onDeleteContact(id)}>
-          Delete
-        </Button>
-      </ul>
-    );
-  });
+ return contactsSelector.map(({ name, number, id }) => {
+  return (
+    <ul key={id}>
+      <li>
+        {name} {number}
+      </li>
+       <Button type="button" onClick={() => onDeleteContact(id)}>
+        Delete
+      </Button>
+    </ul>
+  );
+});
+
+  // return contactsSelector.map(({ name, number, id }) => {
+  //   return (
+  //     <ul key={id}>
+  //       <li>
+  //         {name} {number}
+  //       </li>
+  //        <Button type="button" onClick={() => onDeleteContact(id)}>
+  //         Delete
+  //       </Button>
+  //     </ul>
+  //   );
+  // });
 }
 
