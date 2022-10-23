@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-// import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
-
-// import { setFilter } from "../../redux/filter/filter-actions";
-
-
 import { filterContact } from "../../redux/filter/filter-actions";
 import { getFilter } from "../../redux/filter/filter-selectors"
 
@@ -25,8 +20,6 @@ console.log('filter: ', filter)
 
 const handleChange = (e) => {
   const { value } = e.target;
- // dispatch(filterContact(value));
-
  const action = filterContact(value)
  dispatch(action);
 }
