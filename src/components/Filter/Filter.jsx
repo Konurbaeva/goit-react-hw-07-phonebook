@@ -18,8 +18,8 @@ const Input = styled.input`
 `;
 
 export function Filter() {
-const dispatch = useDispatch();
 const filter = useSelector(getFilter);
+const dispatch = useDispatch();
 
 console.log('filter: ', filter)
 

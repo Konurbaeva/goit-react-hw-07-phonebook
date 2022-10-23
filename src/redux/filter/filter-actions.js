@@ -13,3 +13,10 @@ export const filterContact = value => {
         payload: value
     }
 }
+
+// export const setFilter = value => {
+//     return {
+//         type: SET_FILTER,
+//         payload: value
+//     }
+// }
