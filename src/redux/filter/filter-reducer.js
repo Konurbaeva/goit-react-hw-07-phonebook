@@ -1,14 +1,14 @@
-const initialState = "";
+import { SET_FILTER } from "./filter-types";
 
-const filterReducer = (store = initialState, { type, payload }) => {
+const initialState = ''
+
+const filterReducer = (store = initialState, {type, payload}) => {
     switch(type) {
-        // case "filter/set":
-        //     return payload
-
-        case "contacts/filter":
+        case SET_FILTER:
             return payload
-        default: 
-            return store;
+
+            default:
+                return store
     }
 }
 
