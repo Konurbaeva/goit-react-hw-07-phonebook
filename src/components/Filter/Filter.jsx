@@ -38,24 +38,3 @@ const handleChange = (e) => {
     </div>
   );
 }
-
-// export function Filter({ filter, handleSearch }) {
-  
-//   return (
-//     <div>
-//       <p>Find contacts by name</p>
-//       <Input
-//         value={filter}
-//         onChange={handleSearch}
-//         placeholder="Search ..."
-//         type="text"
-//         name="search"
-//       />
-//     </div>
-//   );
-// }
-
-// Filter.propTypes = {
-//   filter: PropTypes.string.isRequired,
-//   handleSearch: PropTypes.func.isRequired,
-// };

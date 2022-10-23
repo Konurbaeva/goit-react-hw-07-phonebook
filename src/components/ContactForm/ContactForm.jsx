@@ -6,12 +6,6 @@ import { addNewContact } from '../../redux/contacts/contacts-actions';
 export function ContactForm() {
   const dispatch = useDispatch();
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   dispatch(addNewContact(form.elements.name.value, form.elements.number.value));
-  // };
-
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
