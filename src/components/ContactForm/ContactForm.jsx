@@ -10,6 +10,7 @@ export function ContactForm() {
     e.preventDefault();
     const form = e.target;
     dispatch(addNewContact(form.elements.name.value, form.elements.number.value));
+    form.reset();
   };
 
   return (
