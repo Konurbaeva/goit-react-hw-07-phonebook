@@ -22,7 +22,7 @@ export function ContactList() {
     dispatch(action);
   }
   
- return contactsSelector.map(({ name, number, id }) => {
+ return contactsSelector?.map(({ name, number, id }) => {
   return (
     <ul key={id}>
       <li>
