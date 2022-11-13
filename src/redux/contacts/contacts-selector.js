@@ -10,7 +10,6 @@
 //         const result = normalizedName.includes(normalizedFilter) || normalizedNumber.includes(normalizedFilter);
 //         return result;
 //     })
-
 //     return filteredContacts;
 // }
 

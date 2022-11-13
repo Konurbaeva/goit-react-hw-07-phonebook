@@ -37,7 +37,7 @@ export function ContactForm() {
     }
 
     const action = addContact({name:form.elements.name.value, number:form.elements.number.value})
-    dispatch(action);
+    dispatch(action)
     form.reset();
   };
 
