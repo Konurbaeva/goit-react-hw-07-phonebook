@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
-// import { deleteContact } from '../../redux/contacts/contacts-actions';
 import { useEffect } from 'react';
 
 import { fetchContacts, deleteContact } from '../../redux/contacts/contacts-operations'
@@ -19,9 +18,6 @@ const Button = styled.button`
 export function ContactList() {
    const contactsSelector = useSelector(getFilteredContacts)
   // const contactsSelector = useSelector(state=> state.contacts.items)
-
-  console.log('contactsSelector: ', contactsSelector)
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,7 +34,7 @@ export function ContactList() {
   return (
     <ul key={id}>
       <li>
-        {name} {number} {id}
+        {name} {number}
       </li>
        <Button type="button" onClick={() => onDeleteContact(id)}>
         Delete
@@ -46,18 +42,4 @@ export function ContactList() {
     </ul>
   );
 });
-
-  
-//  return contactsSelector?.map(({ name, number, id }) => {
-//   return (
-//     <ul key={id}>
-//       <li>
-//         {name} {number}
-//       </li>
-//        <Button type="button" onClick={() => onDeleteContact(id)}>
-//         Delete
-//       </Button>
-//     </ul>
-//   );
-// });
 }

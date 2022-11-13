@@ -16,15 +16,12 @@ export function Filter() {
 const filter = useSelector(getFilter);
 const dispatch = useDispatch();
 
-console.log('filter: ', filter)
-
 const handleChange = (e) => {
   const { value } = e.target;
  const action = filterContact(value)
  dispatch(action);
 }
 
-  
   return (
     <div>
       <p>Find contacts by name</p>
