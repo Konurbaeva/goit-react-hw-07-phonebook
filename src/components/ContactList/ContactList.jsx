@@ -40,7 +40,7 @@ export function ContactList() {
   return (
     <ul key={id}>
       <li>
-        {name} {number}
+        {name} {number} {id}
       </li>
        <Button type="button" onClick={() => onDeleteContact(id)}>
         Delete
