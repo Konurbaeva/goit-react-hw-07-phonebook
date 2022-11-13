@@ -13,3 +13,5 @@ export const getFilteredContacts = ({filter, contacts}) => {
 
     return filteredContacts;
 }
+
+// export const getTasks = state => state.contacts;

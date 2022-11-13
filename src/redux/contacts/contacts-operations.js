@@ -4,47 +4,31 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 axios.defaults.baseURL = 'https://636501cef711cb49d1f26be6.mockapi.io'
 
-// https://636501cef711cb49d1f26be6.mockapi.io/contacts
-// const instanceContacts = axios.create({
-//     baseUrl: 'https://636501cef711cb49d1f26be6.mockapi.io/contacts'
-// })
-
-export const fetchContacts = createAsyncThunk("contacts/fetchAll", async () => {
-  const response = await axios.get("/contacts");
-
-//  JSON.stringify(response.data)
-//   return response.data;
-
-return JSON.stringify(response.data)
-});
-// const fetchContacts = () => async dispatch => {
-//   try {
-//     const response = await axios.get("/con");
-//   } catch (e) {}
-// };
-
-// const fetchContacts = () => async dispatch => {
-//     try {
-//     const data = await instanceContacts.get('/fetchAll')
-//     return data
-//     } catch (e) {}
-//   };
-
 // fetchContacts "contacts/fetchAll"
 // addContact "contacts/addContact"
 // deleteContact "contacts/deleteContact"
-// export const fetchContacts = async() => {
-//     const data = await instanceContacts.get('/fetchAll')
-//     console.log('fetchContacts data: ', data)
-//     return data
-// }
+
+export const fetchContacts = createAsyncThunk(
+    "contacts/fetchAll",
+    async (_, thunkAPI) => {
+      try {
+        const response = await axios.get("/contacts");
+        return response.data;
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );
 
 
-// First, create the thunk
-// const fetchUserById = createAsyncThunk(
-//   'users/fetchByIdStatus',
-//   async (userId, thunkAPI) => {
-//     const response = await baseUrl.fetchById(userId)
-//     return response.data
-//   }
-// )
+  export const addContact = createAsyncThunk(
+    "contacts/addContact",
+    async (contact, thunkAPI) => {
+      try {
+        const response = await axios.post("/contacts", contact);
+        return response.data;
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );
