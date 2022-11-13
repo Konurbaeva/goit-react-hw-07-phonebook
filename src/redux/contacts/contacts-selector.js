@@ -14,4 +14,4 @@
 //     return filteredContacts;
 // }
 
-//export const getFilteredContacts = state => state.items
+export const getFilteredContacts = state => state.contacts.items

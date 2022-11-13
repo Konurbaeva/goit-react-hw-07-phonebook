@@ -17,10 +17,8 @@ const Button = styled.button`
 `;
 
 export function ContactList() {
- // const contactsSelector = useSelector(getFilteredContacts)
-
-  // const contactsSelector = useSelector(state=> {console.log(state.contacts.items);return state.contacts.items})
-  const contactsSelector = useSelector(state=> state.contacts.items)
+   const contactsSelector = useSelector(getFilteredContacts)
+  // const contactsSelector = useSelector(state=> state.contacts.items)
 
   console.log('contactsSelector: ', contactsSelector)
 
