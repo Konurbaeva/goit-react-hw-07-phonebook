@@ -43,7 +43,6 @@ export function ContactForm() {
 
   return (
     <FormBorder onSubmit={handleSubmit}>
-      
       Name
       <Input
         placeholder="Enter name"
