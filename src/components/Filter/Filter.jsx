@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterContact } from "../../redux/filter/filter-actions";
 import { getFilter } from "../../redux/filter/filter-selectors"
+
+import { filterContacts } from '../../redux/filter/filter-slice'
 
 const Input = styled.input`
   padding: 0.5em;
@@ -18,7 +19,8 @@ const dispatch = useDispatch();
 
 const handleChange = (e) => {
   const { value } = e.target;
- const action = filterContact(value)
+  // console.log('handleChange value: ', JSON.stringify(value));
+ const action = filterContacts(value)
  dispatch(action);
 }
 
