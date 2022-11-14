@@ -20,15 +20,10 @@ const Button = styled.button`
 
 export function ContactList() {
    const contactsSelector = useSelector(getFilteredContacts)
-
-  // const filterSelector = useSelector(state=> {console.log(state.filter);return state.filter })
    const filterSelector = useSelector(getFilter)
-
   
   console.log('filterSelector ', JSON.stringify(filterSelector))
-  
-   // const filterSelector = useSelector()
-  // const contactsSelector = useSelector(state=> state.contacts.items)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
