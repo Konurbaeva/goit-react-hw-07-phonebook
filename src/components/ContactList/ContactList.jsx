@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
 import { useEffect } from 'react';
 
+
+import { getFilter } from '../../redux/filter/filter-selectors'
+
 import { fetchContacts, deleteContact } from '../../redux/contacts/contacts-operations'
 
 const Button = styled.button`
@@ -17,6 +20,14 @@ const Button = styled.button`
 
 export function ContactList() {
    const contactsSelector = useSelector(getFilteredContacts)
+
+  // const filterSelector = useSelector(state=> {console.log(state.filter);return state.filter })
+   const filterSelector = useSelector(getFilter)
+
+  
+  console.log('filterSelector ', JSON.stringify(filterSelector))
+  
+   // const filterSelector = useSelector()
   // const contactsSelector = useSelector(state=> state.contacts.items)
   const dispatch = useDispatch();
 

@@ -14,7 +14,7 @@ const Input = styled.input`
 `;
 
 export function Filter() {
-const filter = useSelector(getFilter);
+// const filter = useSelector(getFilter);
 const dispatch = useDispatch();
 
 const handleChange = (e) => {
@@ -32,7 +32,7 @@ const handleChange = (e) => {
         placeholder="Search ..."
         type="text"
         name="filter" 
-        value={filter} 
+        // value={filter} 
       />
     </div>
   );
