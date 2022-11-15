@@ -19,9 +19,10 @@ const Button = styled.button`
 `;
 
 export function ContactList() {
-   const contactsSelector = useSelector(getFilteredContacts)
+   const getContacts = useSelector(getFilteredContacts)
    const filterSelector = useSelector(getFilter)
   
+  console.log('getContacts: ', getContacts)
   console.log('filterSelector ', JSON.stringify(filterSelector))
 
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export function ContactList() {
   }
 
 
-  return contactsSelector?.map(({ name, number, id }) => {
+  return getContacts?.map(({ name, number, id }) => {
   return (
     <ul key={id}>
       <li>

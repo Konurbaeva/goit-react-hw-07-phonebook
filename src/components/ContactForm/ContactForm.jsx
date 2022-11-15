@@ -4,22 +4,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
  import {  useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operations';
-// import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
-
 import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
 
 export function ContactForm() {
-
- // const contactsSelector = useSelector(getFilteredContacts)
- const contactsSelector = useSelector(getFilteredContacts)
+ const getContacts = useSelector(getFilteredContacts)
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    // const contactExists = contactsSelector.find(item => item.name === form.elements.name.value)
-
-    const contactExists = contactsSelector.find(item => item.name === form.elements.name.value)
+    const contactExists = getContacts.find(item => item.name === form.elements.name.value)
 
     if(contactExists) { 
       toast.warn('🦄 Contact exists!', {
