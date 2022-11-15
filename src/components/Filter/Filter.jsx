@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import { useDispatch } from 'react-redux';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { getFilter } from "../../redux/filter/filter-selectors"
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilter } from "../../redux/filter/filter-selectors"
 
 import { filterContacts } from '../../redux/filter/filter-slice'
 
@@ -16,12 +15,13 @@ const Input = styled.input`
 `;
 
 export function Filter() {
-// const filter = useSelector(getFilter);
+ const filter = useSelector(getFilter);
 const dispatch = useDispatch();
 
 const handleChange = (e) => {
   const { value } = e.target;
  const action = filterContacts(value)
+ console.log('filterContacts action ', action);
  dispatch(action);
 }
 
@@ -33,7 +33,7 @@ const handleChange = (e) => {
         placeholder="Search ..."
         type="text"
         name="filter" 
-        // value={filter} 
+        value={filter} 
       />
     </div>
   );
