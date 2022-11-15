@@ -8,16 +8,10 @@ const filterSlice = createSlice({
   initialState: '',
   reducers: {
     filterContacts: (state, action) => {
-      return {
-        ...state,
-        filter: action.payload,
-      };
+      return state =action.payload
     },
     clearFilter: state => {
-      return {
-        ...state,
-        filter: '',
-      };
+      return state = ''
     },
   },
 });

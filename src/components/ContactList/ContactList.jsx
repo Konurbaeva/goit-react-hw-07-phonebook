@@ -20,10 +20,6 @@ const Button = styled.button`
 
 export function ContactList() {
    const getContacts = useSelector(getFilteredContacts)
-   const filterSelector = useSelector(getFilter)
-  
-  console.log('getContacts: ', getContacts)
-  console.log('filterSelector ', JSON.stringify(filterSelector))
 
   const dispatch = useDispatch();
 

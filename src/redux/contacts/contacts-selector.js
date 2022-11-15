@@ -3,9 +3,6 @@ export const getFilteredContacts = ({ contacts, filter }) => {
       return contacts.items;
     }
 
-    console.log('getFilteredContacts contacts ',  contacts.items);
-    console.log('getFilteredContacts filter ', filter)
-
     const normalisedFilter = filter.filter.toLowerCase();
     const filteredContacts = contacts.items.filter(({ name }) => {
       const normalizedName = name.toLowerCase();
@@ -14,7 +11,3 @@ export const getFilteredContacts = ({ contacts, filter }) => {
     });
     return filteredContacts;
   };
-
-
-
-//  export const getFilteredContacts = state => state.contacts.items

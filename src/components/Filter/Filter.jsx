@@ -21,7 +21,6 @@ const dispatch = useDispatch();
 const handleChange = (e) => {
   const { value } = e.target;
  const action = filterContacts(value)
- console.log('filterContacts action ', action);
  dispatch(action);
 }
 
