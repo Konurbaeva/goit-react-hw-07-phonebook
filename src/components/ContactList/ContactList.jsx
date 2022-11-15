@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/contacts/contacts-selector'
 import { useEffect } from 'react';
 
-
-import { getFilter } from '../../redux/filter/filter-selectors'
-
 import { fetchContacts, deleteContact } from '../../redux/contacts/contacts-operations'
 
 const Button = styled.button`
