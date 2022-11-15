@@ -3,7 +3,7 @@ export const getFilteredContacts = ({ contacts, filter }) => {
       return contacts.items;
     }
 
-    const normalisedFilter = filter.filter.toLowerCase();
+    const normalisedFilter = filter.toLowerCase();
     const filteredContacts = contacts.items.filter(({ name }) => {
       const normalizedName = name.toLowerCase();
       const result = normalizedName.includes(normalisedFilter);
